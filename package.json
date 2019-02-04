@@ -1,0 +1,25 @@
+{
+  "name": "mymemeback",
+  "version": "1.0.0",
+  "description": "Git Repo: https://github.com/powerbarrusa/myMemeBack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/powerbarrusa/myMemeBack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/powerbarrusa/myMemeBack/issues"
+  },
+  "homepage": "https://github.com/powerbarrusa/myMemeBack#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "pg": "^7.8.0"
+  }
+}
