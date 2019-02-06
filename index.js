@@ -14,8 +14,6 @@ const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile')[environment]
 const knex = require('knex')(config)
 
-app.use(bodyParser.urlencoded({
-  extended:false}))
 
 app.use(bodyParser.json())
 
@@ -34,10 +32,10 @@ app.get('/', (req, res, next) => {
 
 app.post('/createMeme', (req, res, next) => {
   console.log("in post", req.body)
-  knex.insert(req.body).into('memes')
+  // res.send(200)
+  knex('memes').insert(req.body)
   .then((rows) => {
-    res.redirect('http://localhost:3000/yourMemes')
-    // res.send(rows)
+    res.send(rows)
   })
   .catch((err) =>{
     next(err);
@@ -46,6 +44,7 @@ app.post('/createMeme', (req, res, next) => {
 
 
 app.use((err, req, res, next) => {
+  console.log(err)
   res.status(500).json({ error: { message: 'SERVER ERROR WHAAT?!' } })
 })
 
