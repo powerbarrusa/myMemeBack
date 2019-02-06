@@ -22,6 +22,16 @@ app.get('/', (req, res, next) => {
   })
 })
 
+app.delete('/:id', (req, res, next) => {
+  knex('memes').where('id', req.params.id).del().returning('*')
+  .then((rows) => {
+    res.send(rows)
+  })
+  .catch((err) => {
+    next(err)
+  })
+})
+
 app.use((err, req, res, next) => {
   res.status(500).json({ error: { message: 'SERVER ERROR WHAAT?!' } })
 })
