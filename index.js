@@ -30,7 +30,6 @@ app.get('/', (req, res, next) => {
   })
 })
 
-<<<<<<< HEAD
 app.post('/createMeme', (req, res, next) => {
   console.log("in post", req.body)
   // res.send(200)
@@ -44,7 +43,6 @@ app.post('/createMeme', (req, res, next) => {
 })
 
 
-=======
 app.delete('/:id', (req, res, next) => {
   knex('memes').where('id', req.params.id).del().returning('*')
   .then((rows) => {
@@ -55,7 +53,6 @@ app.delete('/:id', (req, res, next) => {
   })
 })
 
->>>>>>> e2d010e4bfc0cf7cdf1c431cbf05c996ed674316
 app.use((err, req, res, next) => {
   console.log(err)
   res.status(500).json({ error: { message: 'SERVER ERROR WHAAT?!' } })
