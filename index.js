@@ -5,20 +5,15 @@ var cors = require('cors')
 const dotenv = require("dotenv").config()
 const bodyParser = require('body-parser')
 
-
 app.use(cors())
-
-
 
 const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile')[environment]
 const knex = require('knex')(config)
 
-
 app.use(bodyParser.json())
 
 app.use(express.static('public'))
-
 
 app.get('/', (req, res, next) => {
   knex('memes')
@@ -29,7 +24,6 @@ app.get('/', (req, res, next) => {
     next(err)
   })
 })
-
 
 app.post('/createMeme', (req, res, next) => {
   console.log("in post", req.body)
@@ -42,8 +36,6 @@ app.post('/createMeme', (req, res, next) => {
     next(err);
   })
 })
-
-
 
 app.delete('/:id', (req, res, next) => {
   knex('memes').where('id', req.params.id).del().returning('*')
