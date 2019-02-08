@@ -37,6 +37,7 @@ app.post('/createMeme', (req, res, next) => {
   })
 })
 
+
 app.delete('/:id', (req, res, next) => {
   knex('memes').where('id', req.params.id).del().returning('*')
   .then((rows) => {
