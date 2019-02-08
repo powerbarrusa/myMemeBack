@@ -10,4 +10,10 @@ exports.seed = function(knex, Promise) {
         {id: 3, image_url: "https://comicsandmemes.com/wp-content/uploads/blank-meme-template-018-office-space-if-you-could-just.png", top_text: "If Heroku would just deploy my site", bottom_text: "that would be great"}
       ])
     })
-  }
+    .then(() => {
+      return knex.raw(
+        "SELECT setval('memes_id_seq', (SELECT MAX(id) FROM memes))"
+      )
+    })
+}
+
