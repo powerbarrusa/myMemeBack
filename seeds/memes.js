@@ -15,5 +15,5 @@ exports.seed = function(knex, Promise) {
         "SELECT setval('memes_id_seq', (SELECT MAX(id) FROM memes))"
       )
     })
-}
+  }
 
