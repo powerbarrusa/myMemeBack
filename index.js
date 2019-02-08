@@ -47,6 +47,35 @@ app.delete('/:id', (req, res, next) => {
   })
 })
 
+app.put('/:id', (req, res, next) => {
+  if(req.body.top_text) {
+    knex('memes').update({'top_text': req.body.top_text}).where('id', req.params.id).returning('*')
+    .then((rows) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+  if(req.body.image_url) {
+    knex('memes').update({'image_url': req.body.image_url}).where('id', req.params.id).returning('*')
+    .then((rows) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+  if(req.body.bottom_text) {
+    knex('memes').update({'bottom_text': req.body.bottom_text}).where('id', req.params.id).returning('*')
+    .then((rows) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+})
 
 app.use((err, req, res, next) => {
   console.log(err)
